@@ -20,6 +20,7 @@
 **
 ** Retourne : tetriminos "découpé" si reussi | NULL -> crash
 */
+
 static char	*remove_overflow(char *tetriminos, char letter)
 {
 	size_t	start;
@@ -35,7 +36,7 @@ static char	*remove_overflow(char *tetriminos, char letter)
 }
 
 /*
-** Fonction appelée par adjust_tetriminos() en charger de placer le 
+** Fonction appelée par adjust_tetriminos() en charger de placer le
 ** tetriminos en cours dans une grille inférieure à 4
 ** On supprime d'abord l'overflow via remove_overflow(), c'est-à-dire
 ** que l'on va retirer les caractères avant le premier '#' et après
@@ -46,8 +47,9 @@ static char	*remove_overflow(char *tetriminos, char letter)
 ** (nouveau) "##.\n.#.\n.#.\n"
 ** (nouveau) "##.\n.#.\n.#" <-- on supprime l'overflow
 **
-** Retourne : -1 -> crash | 0 -> impossible | 1 -> success 
+** Retourne : -1 -> crash | 0 -> impossible | 1 -> success
 */
+
 static int	crop(char **tetriminos, char *tab, int map_size, char letter)
 {
 	char	*temp;
@@ -84,12 +86,13 @@ static int	crop(char **tetriminos, char *tab, int map_size, char letter)
 ** (actuel)  "....\n..##\n...#\n...#\n"
 ** (nouveau) ".....\n...##\n....#\n....#\n"
 ** Enfin, on va supprimer l'overflow via remove_overflow(), c'est-à-dire
-** que l'on va retirer les caractères avant le premier '#' et après 
+** que l'on va retirer les caractères avant le premier '#' et après
 ** le dernier '#'.
 ** (final)   "##\n....#\n....#"
 **
 ** Retourne : -1 -> crash | 1 -> success
 */
+
 static int	adjust(char **tetriminos, char *tab, int map_size, char letter)
 {
 	int		i;
@@ -128,6 +131,7 @@ static int	adjust(char **tetriminos, char *tab, int map_size, char letter)
 **
 ** Retourne : -1 -> crash | 0 si impossible d'ajuster | 1 -> success
 */
+
 int			adjust_tetriminos(char **tetriminos, char **tab, int map_size)
 {
 	int		i;
@@ -138,7 +142,7 @@ int			adjust_tetriminos(char **tetriminos, char **tab, int map_size)
 	count = ft_array_length((void**)tab);
 	i = 0;
 	letter = 'A';
-	while(i < count)
+	while (i < count)
 	{
 		if ((tetriminos[i] = set_map(map_size)) == NULL)
 			return (-1);

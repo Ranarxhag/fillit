@@ -18,6 +18,7 @@
 **
 ** Retourne : le statut passé en paramètre (status)
 */
+
 int			clear_tab(char **tetriminos, int i, int status)
 {
 	while (i >= 0)
@@ -36,7 +37,7 @@ int			clear_tab(char **tetriminos, int i, int status)
 ** Fonction en charge d'appeler la fonction d'ajustement des
 ** tetriminos ( adjust_tetriminos() ) et la fonction de remplissement
 ** de la map ( fill_map() ).
-** 0. On crée un tableau qui va permettre de stocker les nouveaux tetriminos 
+** 0. On crée un tableau qui va permettre de stocker les nouveaux tetriminos
 ** 1. On ajuste les tetriminos afin qu'il ai la taille de la map
 ** 2. Si l'ajustement a réussi, on essaie de remplir la map avec ces nouveaux
 **    tetriminos.
@@ -45,12 +46,14 @@ int			clear_tab(char **tetriminos, int i, int status)
 **
 ** Retourne : -1 -> crash | 0 -> echec | 1 -> success
 */
+
 static int	can_be_resolved(char **str, char **tab, int map_size)
 {
 	char	**tetriminos;
 	int		ret;
 
-	if ((tetriminos = (char**)malloc(sizeof(char*) * ft_array_length((void**)tab) + 1)) == NULL)
+	if ((tetriminos = (char**)malloc(sizeof(char*) *
+		ft_array_length((void**)tab) + 1)) == NULL)
 		return (-1);
 	if ((ret = adjust_tetriminos(tetriminos, tab, map_size)) == -1)
 		return (-1);
@@ -74,6 +77,7 @@ static int	can_be_resolved(char **str, char **tab, int map_size)
 **
 ** Retourne : la map si réussi | NULL si erreur
 */
+
 char		*resolve(char **tab)
 {
 	char	*str;
@@ -88,7 +92,7 @@ char		*resolve(char **tab)
 	while (resolved == 0)
 	{
 		resolved = 1;
-		if((ret = can_be_resolved(&str, tab, map_size)) == -1)
+		if ((ret = can_be_resolved(&str, tab, map_size)) == -1)
 			return (NULL);
 		if (ret == 0)
 		{

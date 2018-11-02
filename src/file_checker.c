@@ -20,8 +20,11 @@
 **
 ** Retourne : '0' -> error | '1' -> success
 */
+
 static int		is_valid_format(char *str, int i, int line_length)
 {
+	if (line_length == 4 && str[i] != '\n')
+		return (0);
 	if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
 		return (0);
 	if (i == 0 && str[i] == '\n')
@@ -29,7 +32,7 @@ static int		is_valid_format(char *str, int i, int line_length)
 	if (i > 0 && i % 20 == 0 && line_length != 0)
 		return (0);
 	if (i > 0 && i % 20 == 0 && str[i] != '\n')
-		return (0);	
+		return (0);
 	return (1);
 }
 
@@ -37,8 +40,9 @@ static int		is_valid_format(char *str, int i, int line_length)
 ** Compte le nombre de '#' adjacent au '#' en cours de
 ** vérification (str[i]).
 **
-** Retourne : le nombre de '#' adjacents (result) 
+** Retourne : le nombre de '#' adjacents (result)
 */
+
 static int		count_adjacent_side(char *str, int i)
 {
 	int		result;
@@ -54,7 +58,7 @@ static int		count_adjacent_side(char *str, int i)
 		result++;
 	if ((size_t)i + 1 <= str_len && str[i + 1] == '#')
 		result++;
-	return(result);
+	return (result);
 }
 
 /*
@@ -67,6 +71,7 @@ static int		count_adjacent_side(char *str, int i)
 **
 ** Retourne : '0' -> error | '1' -> success
 */
+
 static int		is_valid_tetriminos(char *str)
 {
 	int i;
@@ -90,7 +95,8 @@ static int		is_valid_tetriminos(char *str)
 		line_length = (str[i] == '\n' ? 0 : line_length + 1);
 		i++;
 	}
-	if (hashtag != 4 || adjacent_side < 6 || (str[BUFF_SIZE - 2] != '\n' && str[BUFF_SIZE - 1] != '\n'))
+	if (hashtag != 4 || adjacent_side < 6 || (str[BUFF_SIZE - 2] != '\n'
+	&& str[BUFF_SIZE - 1] != '\n'))
 		return (0);
 	return (1);
 }
@@ -102,9 +108,10 @@ static int		is_valid_tetriminos(char *str)
 **
 ** Retourne : '0' -> error | '1' -> success
 */
+
 int				read_file(int fd, char **str)
 {
-	char 	buff[BUFF_SIZE + 1];
+	char	buff[BUFF_SIZE + 1];
 	int		ret;
 	int		old_ret;
 	char	*temp;
@@ -114,9 +121,10 @@ int				read_file(int fd, char **str)
 	letter = 'A';
 	while ((ret = read(fd, buff, BUFF_SIZE)) != 0)
 	{
+		buff[ret] = '\0';
 		if (ret < BUFF_SIZE - 1 || !is_valid_tetriminos(buff))
 			return (0);
-		temp = *str == NULL ? ft_strdup("") : *str;
+		temp = (*str == NULL ? ft_strdup("") : *str);
 		ft_strreplace(buff, '#', letter);
 		*str = ft_strjoin(temp, buff);
 		old_ret = ret;

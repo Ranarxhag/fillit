@@ -88,7 +88,7 @@ static void		create_tab(const char *haystack, const char *needle, char **str)
 
 char			**ft_strstrsplit(const char *haystack, const char *needle)
 {
-	char 	**str;
+	char **str;
 
 	if (haystack == NULL || needle == NULL)
 		return (NULL);

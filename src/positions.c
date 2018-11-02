@@ -19,6 +19,7 @@
 **
 ** Retourne : 1 si possible | 0 si impossible
 */
+
 int		poscmp(char *map, char *tetriminos, int position, char letter)
 {
 	int i;
@@ -39,6 +40,7 @@ int		poscmp(char *map, char *tetriminos, int position, char letter)
 **
 ** Retourne : le tableau de positions si réussi | 0 si crash
 */
+
 int		*set_positions(char **tab)
 {
 	int *positions;

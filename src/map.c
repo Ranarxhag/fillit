@@ -19,6 +19,7 @@
 **
 ** Retourne : la racine carrée du nombre passé en paramètre
 */
+
 int			set_map_size(int number)
 {
 	int sqrt;
@@ -35,7 +36,8 @@ int			set_map_size(int number)
 /*
 ** Fonction qui va écrire sur la map le tetriminos passé en paramètre
 ** (char *tetriminos) à partir de sa position de départ (position)
-**/
+*/
+
 static void	write_map(char *map, char *tetriminos, int position, char letter)
 {
 	int		i;
@@ -61,6 +63,7 @@ static void	write_map(char *map, char *tetriminos, int position, char letter)
 **
 ** Retourne : 1 si placé | 0 si impossible
 */
+
 static int	is_placed(char **map, char **tetriminos, int *positions, int index)
 {
 	size_t	map_len;
@@ -97,6 +100,7 @@ static int	is_placed(char **map, char **tetriminos, int *positions, int index)
 **
 ** Retourne : 1 si la map a pu être remplie | 0 si résolution impossible
 */
+
 int			fill_map(char **map, char **tetriminos)
 {
 	int	i;
@@ -105,9 +109,9 @@ int			fill_map(char **map, char **tetriminos)
 
 	i = 0;
 	ret = 0;
-	if((positions = set_positions(tetriminos)) == 0)
+	if ((positions = set_positions(tetriminos)) == 0)
 		return (-1);
-	while(tetriminos[i])
+	while (tetriminos[i])
 	{
 		if ((ret = is_placed(map, tetriminos, positions, i)) == 0)
 		{
@@ -133,6 +137,7 @@ int			fill_map(char **map, char **tetriminos)
 **
 ** Retourne : la map (string) | NULL si erreur
 */
+
 char		*set_map(int map_size)
 {
 	char	*map;

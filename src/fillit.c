@@ -20,6 +20,7 @@
 ** de résolution et de backtracking ( resolve() ) et finalement,
 ** affiche le résultat
 */
+
 void	fillit(int argc, char **argv)
 {
 	int		fd;
@@ -37,7 +38,7 @@ void	fillit(int argc, char **argv)
 		ft_putendl_fd("error", 2);
 		exit(EXIT_FAILURE);
 	}
-	if((tab = ft_strstrsplit(str, "\n\n")) == NULL)
+	if ((tab = ft_strstrsplit(str, "\n\n")) == NULL)
 		exit(EXIT_FAILURE);
 	ft_strdel(&str);
 	if ((str = resolve(tab)) == NULL)
